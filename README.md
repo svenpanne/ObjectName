@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/haskell-opengl/ObjectName.png)](https://travis-ci.org/haskell-opengl/ObjectName)
+[![Build Status](https://travis-ci.org/svenpanne/ObjectName.png)](https://travis-ci.org/svenpanne/ObjectName)
