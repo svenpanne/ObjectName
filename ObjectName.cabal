@@ -19,6 +19,7 @@ library
   exposed-modules: Data.ObjectName
   build-depends: base >= 3 && < 5
   default-language: Haskell2010
+  other-extensions: CPP
   hs-Source-Dirs: src
   ghc-options: -Wall
 
