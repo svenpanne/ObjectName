@@ -1,1 +1,1 @@
-[![Build Status](https://travis-ci.org/svenpanne/ObjectName.png)](https://travis-ci.org/svenpanne/ObjectName)
+[![Hackage](https://img.shields.io/hackage/v/ObjectName.svg)](https://hackage.haskell.org/package/ObjectName) [![Build Status](https://travis-ci.org/svenpanne/ObjectName.png)](https://travis-ci.org/svenpanne/ObjectName)
