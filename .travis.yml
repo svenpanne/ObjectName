@@ -17,10 +17,12 @@ before_install:
  - sudo apt-get update -qq
 
 install:
+ - which strip
  - sudo apt-get install -qq cabal-install-$CABALVER ghc-$GHCVER binutils
  - export PATH="/opt/cabal/$CABALVER/bin:/opt/ghc/$GHCVER/bin:$PATH"
 
 before_script:
+ - which strip
  - cabal --version
  - cabal update
  - ghc --version
