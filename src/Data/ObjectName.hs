@@ -2,7 +2,7 @@
 --------------------------------------------------------------------------------
 -- |
 -- Module      :  Data.ObjectName
--- Copyright   :  (c) Sven Panne 2014
+-- Copyright   :  (c) Sven Panne 2015
 -- License     :  BSD3
 -- 
 -- Maintainer  :  Sven Panne <svenpanne@gmail.com>
@@ -21,6 +21,7 @@ module Data.ObjectName (
 ) where
 
 import Control.Monad ( replicateM )
+import Control.Monad.IO.Class ( MonadIO(..) )
 
 --------------------------------------------------------------------------------
 
@@ -38,14 +39,14 @@ class ObjectName a where
 #endif
    -- | Test if the given object name is currently in use, i.e. test if it has
    -- been generated, but not been deleted so far.
-   isObjectName :: a -> IO Bool
+   isObjectName :: MonadIO m => a -> m Bool
 
    -- | Make the given object name available again, declaring it as unused.
-   deleteObjectName :: a -> IO ()
+   deleteObjectName :: MonadIO m => a -> m ()
    deleteObjectName = deleteObjectNames . (:[])
 
    -- | Bulk version of 'deleteObjectName'.
-   deleteObjectNames:: [a] -> IO ()
+   deleteObjectNames:: MonadIO m => [a] -> m ()
    deleteObjectNames = mapM_ deleteObjectName
 
 -- | A 'GeneratableObjectName' is an 'ObjectName' which can be generated without
@@ -64,9 +65,9 @@ class ObjectName a => GeneratableObjectName  a where
 #endif
    -- | Generate a new unused object name. By generating the name, it becomes
    -- used.
-   genObjectName :: IO a
-   genObjectName = fmap head $ genObjectNames 1
+   genObjectName :: MonadIO m => m a
+   genObjectName = liftIO . fmap head . genObjectNames $ 1
 
    -- | Bulk version of 'genObjectName'.
-   genObjectNames :: Int -> IO [a]
+   genObjectNames :: MonadIO m => Int -> m [a]
    genObjectNames = flip replicateM genObjectName
