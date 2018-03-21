@@ -7,7 +7,7 @@ description:
   texture object name in OpenGL or a buffer object name in OpenAL.
 homepage: https://github.com/svenpanne/ObjectName
 bug-reports: https://github.com/svenpanne/ObjectName/issues
-copyright: Copyright (C) 2014-2015 Sven Panne
+copyright: Copyright (C) 2014-2018 Sven Panne
 license: BSD3
 license-file: LICENSE
 author: Sven Panne
